@@ -1,7 +1,7 @@
 GPRSInterface
 -------------------------------------------------------------
-GPRS(General packet radio service), is a packet oriented mobile data service on the 2G and 3G cellular communication system's global system for mobile communications (GSM).<br> 
-the GPRSInterface is a library to use GPRS like Ethernet or WiFi, you can have a try with a GPRS module(ex. [Seeed_GPRS_Sheild](http://www.seeedstudio.com/wiki/GPRS_Shield_V2.0))<br>
+* **GPRS(General packet radio service)**, is a packet oriented mobile data service on the 2G and 3G cellular communication system's global system for mobile communications (GSM).<br> 
+* the **GPRSInterface** is a library to use GPRS like Ethernet or WiFi, you can have a try with a GPRS module(ex. [Seeed_GPRS_Sheild](http://www.seeedstudio.com/wiki/GPRS_Shield_V2.0))<br>
 
 ## Usage:
 The folowing we will introduce some function which is used very normal. 
@@ -11,11 +11,11 @@ At the very beginning, we should had it initialized. You can use this function :
     GPRSInterface gprs(PIN_TX,PIN_RX,19200,"cmnet",NULL,NULL)
     gprs.init();
 
-PIN_TX and PIN_RX is the serial communication pin with GPRS module
-19200 is the baud rate of serial communication
-"cmnet" is the [APN](http://en.wikipedia.org/wiki/Access_Point_Name) for GPRS service
-the first NULL is the user name for APN
-the second NULL is the password for APN 
+**PIN_TX** and **PIN_RX** is the serial communication pin with GPRS module<br>
+**19200** is the baud rate of serial communication<br>
+**"cmnet"** is the [APN](http://en.wikipedia.org/wiki/Access_Point_Name) for GPRS service<br>
+the first **NULL** is the user name for APN<br>
+the second **NULL** is the password for APN <br>
 
 ### Connect the Internet
 
@@ -25,7 +25,7 @@ you can connect the Internet as the following :
 
 ### Get IP Address
 
-GPRS will get IP address by using DHCP, if connect success, you can get the IP address as following :
+GPRS will get IP address by using **DHCP**, if connect success, you can get the IP address as following :
 
     gprs.getIPAddress();
 
@@ -63,9 +63,4 @@ global distributors and partners to push open hardware movement.<br>
 
 
 [![Analytics](https://ga-beacon.appspot.com/UA-46589105-3/GPRSInterface)](https://github.com/igrigorik/ga-beacon)
-
-
-
-
-
 
