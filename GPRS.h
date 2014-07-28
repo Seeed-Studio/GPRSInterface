@@ -1,24 +1,32 @@
 /*
-  GPRS.h
-  2014 Copyright (c) Seeed Technology Inc.  All right reserved.
-
-  Author:lawliet zou(lawliet.zou@gmail.com)
-  2014-2-24
-
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the GNU Lesser General Public
-  License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
-
-  This library is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  Lesser General Public License for more details.
-
-  You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+ * GPRS.h
+ *
+ * Copyright (c) 2014 seeed technology inc.
+ * Website    : www.seeed.cc
+ * Author     : lawliet zou
+ * Create Time: Feb 2014
+ * Change Log :
+ *
+ * The MIT License (MIT)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 #ifndef __GPRS_H__
 #define __GPRS_H__
@@ -39,13 +47,13 @@ class GPRS: public Modem
 {
 
 public:
-    /**	Constructor
-     *	@param tx mbed pin to use for tx line of Serial interface
-     * 	@param rx mbed pin to use for rx line of Serial interface
-     * 	@param baudRate serial communicate baud rate
-     * 	@param apn name of the gateway for GPRS to connect to the network
-     * 	@param userName apn's username, usually is NULL
-     * 	@param passWord apn's password, usually is NULL
+    /** Constructor
+     *  @param tx mbed pin to use for tx line of Serial interface
+     *  @param rx mbed pin to use for rx line of Serial interface
+     *  @param baudRate serial communicate baud rate
+     *  @param apn name of the gateway for GPRS to connect to the network
+     *  @param userName apn's username, usually is NULL
+     *  @param passWord apn's password, usually is NULL
      */
     GPRS(int tx, int rx, int baudRate, const char* apn, const char* userName = NULL, const char *passWord = NULL);
 
@@ -55,35 +63,35 @@ public:
         return inst;
     };
 
-    /**	Connect the GPRS module to the network.
-     * 	@return true if connected, false otherwise
+    /** Connect the GPRS module to the network.
+     *  @return true if connected, false otherwise
      */
     bool join(void);
 
     /** Disconnect the GPRS module from the network
-     * 	@returns true if successful
+     *  @returns true if successful
      */
     bool disconnect(void);
     
     /** Close a tcp connection
-     * 	@returns true if successful
+     *  @returns true if successful
      */
     bool close(int socket);
 
     /** Open a tcp/udp connection with the specified host on the specified port
-     * 	@param socket an endpoint of an inter-process communication flow of GPRS module,for SIM900 module, it is in [0,6]
-     * 	@param ptl protocol for socket, TCP/UDP can be choosen
-     * 	@param host host (can be either an ip address or a name. If a name is provided, a dns request will be established)
-     * 	@param port port
-     * 	@param timeout wait seconds till connected
-     * 	@returns true if successful
+     *  @param socket an endpoint of an inter-process communication flow of GPRS module,for SIM900 module, it is in [0,6]
+     *  @param ptl protocol for socket, TCP/UDP can be choosen
+     *  @param host host (can be either an ip address or a name. If a name is provided, a dns request will be established)
+     *  @param port port
+     *  @param timeout wait seconds till connected
+     *  @returns true if successful
      */
     bool connect(int socket, Protocol ptl, const char * host, int port, int timeout = DEFAULT_TIMEOUT);
 
     /** Set the protocol (UDP or TCP)
-     * 	@param socket socket
-     * 	@param p protocol
-     * 	@returns true if successful
+     *  @param socket socket
+     *  @param p protocol
+     *  @returns true if successful
      */
     bool setProtocol(int socket, Protocol p);
 
@@ -91,41 +99,41 @@ public:
      */
     void reset();
 
-    /**	check if GPRS module is readable or not
-     *	@returns true if readable
+    /** check if GPRS module is readable or not
+     *  @returns true if readable
      */
     bool readable(void);
 
-    /**	wait a few time to check if GPRS module is readable or not
-     *	@param socket socket
-     *	@param wait_time time of waiting
+    /** wait a few time to check if GPRS module is readable or not
+     *  @param socket socket
+     *  @param wait_time time of waiting
      */
     int wait_readable(int socket, int wait_time);
 
-    /**	wait a few time to check if GPRS module is writeable or not
-     *	@param socket socket
-     *	@param wait_time time of waiting
+    /** wait a few time to check if GPRS module is writeable or not
+     *  @param socket socket
+     *  @param wait_time time of waiting
      */
     int wait_writeable(int socket, int req_size);
 
     /** Check if a tcp link is active
-     * 	@returns true if successful
+     *  @returns true if successful
      */
     bool is_connected(int socket);
 
     /** send data to socket
-     *	@param socket socket
-     *	@param str string to be sent
-     * 	@param len string length
-     * 	@returns return bytes that actually been send
+     *  @param socket socket
+     *  @param str string to be sent
+     *  @param len string length
+     *  @returns return bytes that actually been send
      */
     int send(int socket, const char * str, int len);
 
     /** read data from socket
-     * 	@param socket socket
-     *	@param buf buffer that will store the data read from socket
-     *	@param len string length need to read from socket
-     *	@returns bytes that actually read
+     *  @param socket socket
+     *  @param buf buffer that will store the data read from socket
+     *  @param len string length need to read from socket
+     *  @returns bytes that actually read
      */
     int recv(int socket, char* buf, int len);
 
