@@ -1,0 +1,29 @@
+  
+#######################################
+# Syntax Coloring Map For 
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+connect	KEYWORD2
+is_connected	KEYWORD2
+send	KEYWORD2
+send_all	KEYWORD2
+receive	KEYWORD2
+receive_all	KEYWORD2
+init	KEYWORD2
+connect	KEYWORD2
+disconnect	KEYWORD2
+getIPAddress	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
