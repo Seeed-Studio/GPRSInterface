@@ -1,6 +1,8 @@
-##GPRSInterface
+## GPRSInterface
+
+
 * **GPRS(General packet radio service)**, is a packet oriented mobile data service on the 2G and 3G cellular communication system's global system for mobile communications (GSM).<br> 
-* the **GPRSInterface** is a library to use GPRS like Ethernet or WiFi, you can have a try with a GPRS module(ex. [Seeed_GPRS_Sheild](http://www.seeedstudio.com/wiki/GPRS_Shield_V2.0))<br>
+* the **GPRSInterface** is a library to use GPRS like Ethernet or WiFi, you can have a try with a GPRS module(ex. [Seeed_GPRS_Sheild](http://wiki.seeedstudio.com/GPRS_Shield_V3.0/))<br>
 
 ### Usage:
 The folowing we will introduce some function which is used very normal. 
