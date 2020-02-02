@@ -7,15 +7,14 @@
 
 char http_cmd[] = "GET /media/uploads/mbed_official/hello.txt HTTP/1.0\r\n\r\n";
 char buffer[512];
-GPRSInterface gprsInterface(PIN_TX,PIN_RX,19200,"cmnet",NULL,NULL);
+GPRSInterface gprsInterface(PIN_TX, PIN_RX, 19200, "cmnet", NULL, NULL);
 
-void setup()
-{
+void setup() {
     Serial.begin(9600);
-      // use DHCP
+    // use DHCP
     gprsInterface.init();
     // attempt DHCP
-    while(false == gprsInterface.connect()) {
+    while (false == gprsInterface.connect()) {
         Serial.println("gprs connect error");
         delay(2000);
     }
@@ -25,16 +24,17 @@ void setup()
     Serial.println(gprsInterface.getIPAddress());
 
     TCPSocketConnection sock;
-    if(false == sock.connect("mbed.org", 80)) {
+    if (false == sock.connect("mbed.org", 80)) {
         Serial.println("connect error");
     }
 
     Serial.println("waiting to fetch...");
-    sock.send_all(http_cmd, sizeof(http_cmd)-1);
+    sock.send_all(http_cmd, sizeof(http_cmd) - 1);
     while (true) {
-        int ret = sock.receive(buffer, sizeof(buffer)-1);
-        if (ret <= 0)
+        int ret = sock.receive(buffer, sizeof(buffer) - 1);
+        if (ret <= 0) {
             break;
+        }
         buffer[ret] = '\0';
         Serial.print("Recv: ");
         Serial.print(ret);
@@ -42,12 +42,11 @@ void setup()
         Serial.println(buffer);
     }
     sock.close();
-    gprsInterface.disconnect();  
+    gprsInterface.disconnect();
 }
 
-void loop()
-{
-  //nothing to do 
+void loop() {
+    //nothing to do
 }
 
 
